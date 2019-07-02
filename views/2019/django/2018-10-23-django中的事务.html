@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>django数据库事务 | DJHS0</title>
+    <meta name="description" content="djhs0 start.">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.719cd97d.css" as="style"><link rel="preload" href="/assets/js/app.6a871576.js" as="script"><link rel="preload" href="/assets/js/4.9ee7c604.js" as="script"><link rel="preload" href="/assets/js/1.0b6a70ce.js" as="script"><link rel="preload" href="/assets/js/11.6260c6f0.js" as="script"><link rel="prefetch" href="/assets/js/10.c2dc69e0.js"><link rel="prefetch" href="/assets/js/12.4f55b3cf.js"><link rel="prefetch" href="/assets/js/13.d864566b.js"><link rel="prefetch" href="/assets/js/14.1d7ee0d5.js"><link rel="prefetch" href="/assets/js/15.6ce54c8c.js"><link rel="prefetch" href="/assets/js/16.454d8671.js"><link rel="prefetch" href="/assets/js/17.c8ddde1e.js"><link rel="prefetch" href="/assets/js/18.a0518ca2.js"><link rel="prefetch" href="/assets/js/19.10918e9e.js"><link rel="prefetch" href="/assets/js/20.ec377985.js"><link rel="prefetch" href="/assets/js/21.5a592242.js"><link rel="prefetch" href="/assets/js/22.e739d791.js"><link rel="prefetch" href="/assets/js/23.89467964.js"><link rel="prefetch" href="/assets/js/5.12bd1da9.js"><link rel="prefetch" href="/assets/js/6.29bf57e7.js"><link rel="prefetch" href="/assets/js/7.e4d52014.js"><link rel="prefetch" href="/assets/js/8.22f77f9e.js"><link rel="prefetch" href="/assets/js/9.55f14ddd.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.cd2faf37.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.719cd97d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.png" alt="DJHS0" class="logo"> <span class="site-name">DJHS0</span></a> <div class="links"><div class="color-picker"><a href="#" class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/django.html" class="nav-link"><i class="iconfont undefined"></i>
+  django
+</a></li><li class="dropdown-item"><!----> <a href="/category/python.html" class="nav-link"><i class="iconfont undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/category/windows.html" class="nav-link"><i class="iconfont undefined"></i>
+  windows
+</a></li><li class="dropdown-item"><!----> <a href="/category/category1.html" class="nav-link"><i class="iconfont undefined"></i>
+  category1
+</a></li><li class="dropdown-item"><!----> <a href="/category/haha.html" class="nav-link"><i class="iconfont undefined"></i>
+  haha
+</a></li><li class="dropdown-item"><!----> <a href="/category/category2.html" class="nav-link"><i class="iconfont undefined"></i>
+  category2
+</a></li><li class="dropdown-item"><!----> <a href="/category/test.html" class="nav-link"><i class="iconfont undefined"></i>
+  test
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/dongdawang" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/django.html" class="nav-link"><i class="iconfont undefined"></i>
+  django
+</a></li><li class="dropdown-item"><!----> <a href="/category/python.html" class="nav-link"><i class="iconfont undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/category/windows.html" class="nav-link"><i class="iconfont undefined"></i>
+  windows
+</a></li><li class="dropdown-item"><!----> <a href="/category/category1.html" class="nav-link"><i class="iconfont undefined"></i>
+  category1
+</a></li><li class="dropdown-item"><!----> <a href="/category/haha.html" class="nav-link"><i class="iconfont undefined"></i>
+  haha
+</a></li><li class="dropdown-item"><!----> <a href="/category/category2.html" class="nav-link"><i class="iconfont undefined"></i>
+  category2
+</a></li><li class="dropdown-item"><!----> <a href="/category/test.html" class="nav-link"><i class="iconfont undefined"></i>
+  test
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/dongdawang" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>django数据库事务</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/2019/django/2018-10-23-django%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html#满足特性" class="sidebar-link">满足特性</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/django/2018-10-23-django%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html#django中的事务" class="sidebar-link">Django中的事务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/views/2019/django/2018-10-23-django%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html#默认数据库事务" class="sidebar-link">默认数据库事务</a></li><li class="sidebar-sub-header"><a href="/views/2019/django/2018-10-23-django%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html#配置数据库事务" class="sidebar-link">配置数据库事务</a></li></ul></li><li><a href="/views/2019/django/2018-10-23-django%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html#django-orm-事务相关资源" class="sidebar-link">Django ORM 事务相关资源</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>django数据库事务</h1> <hr> <div data-v-0b496ca7><i class="iconfont reco-account" data-v-0b496ca7><span data-v-0b496ca7>djhs0</span></i> <i class="iconfont reco-date" data-v-0b496ca7><span data-v-0b496ca7>2018-10-23</span></i> <span id="/views/2019/django/2018-10-23-django%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-2e99e05a data-v-0b496ca7><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-2e99e05a></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-2e99e05a></a></span> <i class="iconfont reco-tag tags" data-v-0b496ca7><span class="tag-item" data-v-0b496ca7>
+      db
+    </span></i></div></div> <div class="content__default"><h1 id="django数据库事务"><a href="#django数据库事务" aria-hidden="true" class="header-anchor">#</a> django数据库事务</h1> <p>在数据库系统中，一个事务是指一系列数据库操作组成的一个完成的逻辑过程。比如一个银行转账过程，从原账户扣除金额，往目标账户中添加金额，这个两个操作组成了一个数据库事务。</p> <h2 id="满足特性"><a href="#满足特性" aria-hidden="true" class="header-anchor">#</a> 满足特性</h2> <p>一个数据库事务需要满足以下4个特性</p> <ol><li>原子性<br>
+指一个事务所包含的所有操作要么全部成功，要么全部失败。</li> <li>一致性<br>
+指事务在事务开始之前和事务结束之后，数据库的完整性没有遭到破坏。这表示写入的资料必须完全符合预期，这包括资料的精确性，串联性以及后续数据库能够自发性的完成预定工作。(比如转账之前A账户300，B账户200，综合500。转账之后不能总和变成了不是500了。)</li> <li>隔离性<br>
+数据库允许多个并发事务同时对其数据进行读取和修改，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。</li> <li>持久性<br>
+指事务结束后，对数据库的修改是永久性的，即使系统故障也不会丢失。</li></ol> <h2 id="django中的事务"><a href="#django中的事务" aria-hidden="true" class="header-anchor">#</a> Django中的事务</h2> <h3 id="默认数据库事务"><a href="#默认数据库事务" aria-hidden="true" class="header-anchor">#</a> 默认数据库事务</h3> <p>django中ORM中的事务是在一次查询范围上的。</p> <blockquote><p>Each query is immediately committed to the database, unless
+a transaction is active.</p></blockquote> <p>所以在使用ORM执行save或者update操作时，每一个操作都是一个独立的事务，save之后就立马commit了。</p> <h3 id="配置数据库事务"><a href="#配置数据库事务" aria-hidden="true" class="header-anchor">#</a> 配置数据库事务</h3> <h4 id="_1-在一个事务中包含大于一个的数据库操作"><a href="#_1-在一个事务中包含大于一个的数据库操作" aria-hidden="true" class="header-anchor">#</a> 1.在一个事务中包含大于一个的数据库操作</h4> <p>开启数据库事务可以使用</p> <blockquote><p>from django.db import transaction</p></blockquote> <ol><li>(无效)使用transaction.atomic装饰器</li></ol> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token decorator annotation punctuation">@transaction<span class="token punctuation">.</span>atomic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">register</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        user <span class="token operator">=</span> request<span class="token punctuation">.</span>user
+        day <span class="token operator">=</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'day'</span><span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>coin_nums <span class="token operator">-=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+        trade <span class="token operator">=</span> TradeRecord<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        trade<span class="token punctuation">.</span>user <span class="token operator">=</span> user
+        trade<span class="token punctuation">.</span>amount <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+        trade<span class="token punctuation">.</span>time <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        trade<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">except</span> ObjectDoesNotExist<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;res&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;error！&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;res&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;OK！&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>再上例中使用了在view函数上加入装饰器的方式在view中开启事务，在view成功完成时自动commit事务。<strong>注意</strong>：上例中的数据库操作出现的异常会被view中定义的try-except捕获，transaction.atomic捕获不到异常就不会去rollback，所以无论如何view都会执行成功，最后都会commit，这样就违背初衷了。<br>
+在1中如果去掉try-except并不是个好的方式，删除try会导致异常被抛出调用链，并且在其他地方出现。所以使用以下方式是一种解决办法。
+2. (有效)使用with管理事务</p> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">register</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> transaction<span class="token punctuation">.</span>atomic<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            user <span class="token operator">=</span> request<span class="token punctuation">.</span>user
+            day <span class="token operator">=</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'day'</span><span class="token punctuation">)</span>
+            user<span class="token punctuation">.</span>coin_nums <span class="token operator">-=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+            trade <span class="token operator">=</span> TradeRecord<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            trade<span class="token punctuation">.</span>user <span class="token operator">=</span> user
+            trade<span class="token punctuation">.</span>amount <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+            trade<span class="token punctuation">.</span>time <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+            user<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            trade<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">except</span> ObjectDoesNotExist<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;res&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;error！&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;res&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;OK！&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h4 id="_2-对每个http请求启用事务"><a href="#_2-对每个http请求启用事务" aria-hidden="true" class="header-anchor">#</a> 2.对每个HTTP请求启用事务</h4> <p>django中允许你对每个http请求都启用transaction。在这种情况下，django会自动装饰每个view函数，加入视图函数抛出异常，django就会回滚事务。<br>
+配置方式，在<code>settings.py</code>文件中</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(SITE_ROOT, 'test.db'),
+        'ATOMIC_REQUEST': True,  # 启用Transaction per request mode
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>值得注意的是上面的做法等同于装饰器的方法，同样存在必须抛出异常才能自动回滚，如果未检测到异常，那么view就会正常结束，然后数据库的修改就会被提交。针对这种形式，既然已经在全局上启用<code>Transaction per request mode</code>，那么就在全局上修改exception中间件，让中间件可以捕获view函数抛出的数据库操作异常，然后处理。</p> <h4 id="_3-设置savepoint"><a href="#_3-设置savepoint" aria-hidden="true" class="header-anchor">#</a> 3.设置savepoint</h4> <p>使用with transaction.atomic()后再捕获异常之后会调用rollback，然后回滚到transaction.atomic()开始的时候。同样的也可以设置savepoint。<br>
+savepoint设置在一个transaction中，设置savepoint可以使用户只回滚或者提交一部分事务。支持savepoint的数据库为SQLite (≥ 3.6.8), PostgreSQL, Oracle 和 MySQL (当使用
+InnoDB storage engine)<br>
+设置savepoint主要使用</p> <ol><li>savepoint(using=None)</li> <li>savepoint_commit(sid, using=None)</li> <li>savepoint_rollback(sid, using=None)
+三个函数，具体使用方法</li></ol> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> transaction
+
+<span class="token comment"># open a transaction</span>
+<span class="token decorator annotation punctuation">@transaction<span class="token punctuation">.</span>atomic</span>
+<span class="token keyword">def</span> <span class="token function">viewfunc</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># transaction now contains a.save()</span>
+    
+    sid <span class="token operator">=</span> transaction<span class="token punctuation">.</span>savepoint<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    b<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># transaction now contains a.save() and b.save()</span>
+    <span class="token keyword">if</span> want_to_keep_b<span class="token punctuation">:</span>
+        transaction<span class="token punctuation">.</span>savepoint_commit<span class="token punctuation">(</span>sid<span class="token punctuation">)</span>
+        <span class="token comment"># open transaction still contains a.save() and b.save()</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        transaction<span class="token punctuation">.</span>savepoint_rollback<span class="token punctuation">(</span>sid<span class="token punctuation">)</span>
+        <span class="token comment"># open transaction now contains only a.save()</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>在上例中的回滚行为中如果回滚中间设置的回滚点，如果手动回滚到sid的savepoint。但是如果在这个事务中的其他地方出现了异常，这个事务依旧会执行整个回滚，则刚才sid点的回滚也被取消了。可以通过设置回滚行为来取消事务的自动回滚。主要使用以下两个函数：</p> <ol><li>get_rollback(using=None)</li> <li>set_rollback(rollback, using=None)</li></ol> <h4 id="_4-嵌套事务"><a href="#_4-嵌套事务" aria-hidden="true" class="header-anchor">#</a> 4.嵌套事务</h4> <p>实际上不适用savepoint也可以实现部分回滚的效果。可以使用嵌套事务来实现。</p> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">save_points</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>save<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> transaction<span class="token punctuation">.</span>atomic<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        user <span class="token operator">=</span> request<span class="token punctuation">.</span>user
+        day <span class="token operator">=</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'day'</span><span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>coin_nums <span class="token operator">-=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+        <span class="token keyword">with</span> transaction<span class="token punctuation">.</span>atomic<span class="token punctuation">(</span><span class="token punctuation">)</span>：
+            trade <span class="token operator">=</span> TradeRecord<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            trade<span class="token punctuation">.</span>user <span class="token operator">=</span> user
+            trade<span class="token punctuation">.</span>amount <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+            trade<span class="token punctuation">.</span>time <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+            trade<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h2 id="django-orm-事务相关资源"><a href="#django-orm-事务相关资源" aria-hidden="true" class="header-anchor">#</a> Django ORM 事务相关资源</h2> <ul><li><a href="https://realpython.com/transaction-management-with-django-1-6/" target="_blank" rel="noopener noreferrer">Transaction Management with Django <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li>dajngo2.0官方文档</li></ul></div> <!----> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">7/2/2019, 11:43:53 PM</span></div></footer> <!----> </main> <div class="valine-wrapper" data-v-0162251c><div id="valine" data-v-0162251c></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-d0bfeaa4 data-v-d0bfeaa4><i class="iconfont reco-up" data-v-d0bfeaa4></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a871576.js" defer></script><script src="/assets/js/4.9ee7c604.js" defer></script><script src="/assets/js/1.0b6a70ce.js" defer></script><script src="/assets/js/11.6260c6f0.js" defer></script>
+  </body>
+</html>
