@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>重构2Go实践：提炼函数 | DJHS0</title>
+    <meta name="description" content="djhs0 start.">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.719cd97d.css" as="style"><link rel="preload" href="/assets/js/app.5b21e295.js" as="script"><link rel="preload" href="/assets/js/4.66501a8b.js" as="script"><link rel="preload" href="/assets/js/1.50fe1130.js" as="script"><link rel="preload" href="/assets/js/23.79b092d3.js" as="script"><link rel="prefetch" href="/assets/js/10.a196d931.js"><link rel="prefetch" href="/assets/js/11.984eb2d7.js"><link rel="prefetch" href="/assets/js/12.c0865505.js"><link rel="prefetch" href="/assets/js/13.d0fde4f9.js"><link rel="prefetch" href="/assets/js/14.e58c0561.js"><link rel="prefetch" href="/assets/js/15.5765b091.js"><link rel="prefetch" href="/assets/js/16.008652ca.js"><link rel="prefetch" href="/assets/js/17.a3b3e7c5.js"><link rel="prefetch" href="/assets/js/18.9949330c.js"><link rel="prefetch" href="/assets/js/19.6f506b7a.js"><link rel="prefetch" href="/assets/js/20.52bb6dc0.js"><link rel="prefetch" href="/assets/js/21.fe05def4.js"><link rel="prefetch" href="/assets/js/22.f017ab33.js"><link rel="prefetch" href="/assets/js/24.a51b9bb1.js"><link rel="prefetch" href="/assets/js/25.c7ca51ec.js"><link rel="prefetch" href="/assets/js/5.ff361501.js"><link rel="prefetch" href="/assets/js/6.44158307.js"><link rel="prefetch" href="/assets/js/7.e4d52014.js"><link rel="prefetch" href="/assets/js/8.cf97318b.js"><link rel="prefetch" href="/assets/js/9.c1a7242a.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.cd2faf37.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.719cd97d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.png" alt="DJHS0" class="logo"> <span class="site-name">DJHS0</span></a> <div class="links"><div class="color-picker"><a href="#" class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/django.html" class="nav-link"><i class="iconfont undefined"></i>
+  django
+</a></li><li class="dropdown-item"><!----> <a href="/category/旧笔记搬运.html" class="nav-link"><i class="iconfont undefined"></i>
+  旧笔记搬运
+</a></li><li class="dropdown-item"><!----> <a href="/category/linux.html" class="nav-link"><i class="iconfont undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/category/python.html" class="nav-link"><i class="iconfont undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/category/go.html" class="nav-link"><i class="iconfont undefined"></i>
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/category/windows.html" class="nav-link"><i class="iconfont undefined"></i>
+  windows
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/djhs0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/django.html" class="nav-link"><i class="iconfont undefined"></i>
+  django
+</a></li><li class="dropdown-item"><!----> <a href="/category/旧笔记搬运.html" class="nav-link"><i class="iconfont undefined"></i>
+  旧笔记搬运
+</a></li><li class="dropdown-item"><!----> <a href="/category/linux.html" class="nav-link"><i class="iconfont undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/category/python.html" class="nav-link"><i class="iconfont undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/category/go.html" class="nav-link"><i class="iconfont undefined"></i>
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/category/windows.html" class="nav-link"><i class="iconfont undefined"></i>
+  windows
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/djhs0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>重构2Go实践：提炼函数</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#提炼函数" class="sidebar-link">提炼函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#何时需要提炼函数？" class="sidebar-link">何时需要提炼函数？</a></li><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#大量的函数调用影响性能？" class="sidebar-link">大量的函数调用影响性能？</a></li><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#函数名" class="sidebar-link">函数名</a></li><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#实施注意点" class="sidebar-link">实施注意点</a></li></ul></li><li><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#例子" class="sidebar-link">例子</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#原始函数" class="sidebar-link">原始函数</a></li><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#提炼后的函数" class="sidebar-link">提炼后的函数</a></li><li class="sidebar-sub-header"><a href="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html#运行例子" class="sidebar-link">运行例子</a></li></ul></li></ul></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>重构2Go实践：提炼函数</h1> <hr> <div data-v-0b496ca7><i class="iconfont reco-account" data-v-0b496ca7><span data-v-0b496ca7>djhs0</span></i> <i class="iconfont reco-date" data-v-0b496ca7><span data-v-0b496ca7>2019-7-31</span></i> <span id="/views/2019/refactor/2019-07-31-%E9%87%8D%E6%9E%842Go%E5%AE%9E%E8%B7%B5-%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-2e99e05a data-v-0b496ca7><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-2e99e05a></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-2e99e05a></a></span> <i class="iconfont reco-tag tags" data-v-0b496ca7><span class="tag-item" data-v-0b496ca7>
+      重构
+    </span><span class="tag-item" data-v-0b496ca7>
+      go
+    </span></i></div></div> <div class="content__default"><h2 id="提炼函数"><a href="#提炼函数" aria-hidden="true" class="header-anchor">#</a> 提炼函数</h2> <p>提炼函数作为重构2书中第一个提到的重构手法，在编程实践中很频繁的使用这个手法来改善代码，而且提炼函数也是比较容易驾驭的一种重构手法。</p> <h3 id="何时需要提炼函数？"><a href="#何时需要提炼函数？" aria-hidden="true" class="header-anchor">#</a> 何时需要提炼函数？</h3> <p>作者列出了几种看法：</p> <ol><li>函数应该在一屏之中能完全显示，如果超出则需要考虑提炼函数了</li> <li>只要被使用不止一次的代码，就应该放进一个函数中</li></ol> <p>而作者给出了自己的观点：<strong>将意图与实现分开</strong>，如果需要花时间浏览一段代码才能弄清它到底在干什么，那么就应该将其提炼到一个函数中。</p> <h3 id="大量的函数调用影响性能？"><a href="#大量的函数调用影响性能？" aria-hidden="true" class="header-anchor">#</a> 大量的函数调用影响性能？</h3> <p>现在编译器的优化功能已经将其影响降到很低了，同时谨记性能优化的一般指导方针：<strong>不要过早的优化性能</strong></p> <h3 id="函数名"><a href="#函数名" aria-hidden="true" class="header-anchor">#</a> 函数名</h3> <p>函数名需要有个好名字，一定要有自解释性，如果你找不到一个好的名字来描述这个函数，那么就要仔细考虑下是否有必要提炼函数。</p> <h3 id="实施注意点"><a href="#实施注意点" aria-hidden="true" class="header-anchor">#</a> 实施注意点</h3> <p>提炼函数中，提炼部分被赋值的局部变量太多，这时最好先放弃提炼。考虑其他重构手法，拆分变量，以查询取代临时变量。</p> <h2 id="例子"><a href="#例子" aria-hidden="true" class="header-anchor">#</a> 例子</h2> <h3 id="原始函数"><a href="#原始函数" aria-hidden="true" class="header-anchor">#</a> 原始函数</h3> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token comment">// Invoice 发票</span>
+<span class="token keyword">type</span> Invoice <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	Customer <span class="token builtin">string</span>
+	Orders   <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int32</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// PrintOwing 打印未付账单</span>
+<span class="token keyword">func</span> <span class="token function">PrintOwing</span><span class="token punctuation">(</span>invoice Invoice<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;***************************&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;***** Customer Owes *******&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;***************************&quot;</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">var</span> outstanding <span class="token builtin">int32</span>
+
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> val <span class="token operator">:=</span> <span class="token keyword">range</span> invoice<span class="token punctuation">.</span>Orders <span class="token punctuation">{</span>
+		outstanding <span class="token operator">+=</span> val
+	<span class="token punctuation">}</span>
+
+	<span class="token comment">// print details</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;name: %s\n&quot;</span><span class="token punctuation">,</span> invoice<span class="token punctuation">.</span>Customer<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;amount: %d\n&quot;</span><span class="token punctuation">,</span> outstanding<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="提炼后的函数"><a href="#提炼后的函数" aria-hidden="true" class="header-anchor">#</a> 提炼后的函数</h3> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token comment">// PrintOwing2 提炼函数后</span>
+<span class="token keyword">func</span> <span class="token function">PrintOwing2</span><span class="token punctuation">(</span>invoice Invoice<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">PrintBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	outstanding <span class="token operator">:=</span> <span class="token function">CalcOutstanding</span><span class="token punctuation">(</span>invoice<span class="token punctuation">)</span>
+
+	<span class="token function">PrintDetail</span><span class="token punctuation">(</span>invoice<span class="token punctuation">,</span> outstanding<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// PrintBanner 打印横幅</span>
+<span class="token comment">// 入参：无  出参：无</span>
+<span class="token keyword">func</span> <span class="token function">PrintBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;***************************&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;***** Customer Owes *******&quot;</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;***************************&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// CalcOutstanding 计算出未付款项</span>
+<span class="token comment">// 入参：有  出参：有</span>
+<span class="token keyword">func</span> <span class="token function">CalcOutstanding</span><span class="token punctuation">(</span>invoice Invoice<span class="token punctuation">)</span> <span class="token builtin">int32</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> result <span class="token builtin">int32</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> val <span class="token operator">:=</span> <span class="token keyword">range</span> invoice<span class="token punctuation">.</span>Orders <span class="token punctuation">{</span>
+		result <span class="token operator">+=</span> val
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+
+<span class="token comment">// PrintDetail 打印账单的详细</span>
+<span class="token comment">// 入参：有  出参：无</span>
+<span class="token keyword">func</span> <span class="token function">PrintDetail</span><span class="token punctuation">(</span>invoice Invoice<span class="token punctuation">,</span> outstanding <span class="token builtin">int32</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;name: %s\n&quot;</span><span class="token punctuation">,</span> invoice<span class="token punctuation">.</span>Customer<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;amount: %d\n&quot;</span><span class="token punctuation">,</span> outstanding<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h3 id="运行例子"><a href="#运行例子" aria-hidden="true" class="header-anchor">#</a> 运行例子</h3> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	order <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int32</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span>
+	invo <span class="token operator">:=</span> Invoice<span class="token punctuation">{</span>Customer<span class="token punctuation">:</span> <span class="token string">&quot;djh&quot;</span><span class="token punctuation">,</span> Orders<span class="token punctuation">:</span> order<span class="token punctuation">}</span>
+
+	<span class="token function">PrintOwing</span><span class="token punctuation">(</span>invo<span class="token punctuation">)</span>
+	<span class="token function">PrintOwing2</span><span class="token punctuation">(</span>invo<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <!----> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">7/31/2019, 3:13:34 PM</span></div></footer> <!----> </main> <div class="valine-wrapper" data-v-0162251c><div id="valine" data-v-0162251c></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-d0bfeaa4 data-v-d0bfeaa4><i class="iconfont reco-up" data-v-d0bfeaa4></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.5b21e295.js" defer></script><script src="/assets/js/4.66501a8b.js" defer></script><script src="/assets/js/1.50fe1130.js" defer></script><script src="/assets/js/23.79b092d3.js" defer></script>
+  </body>
+</html>
