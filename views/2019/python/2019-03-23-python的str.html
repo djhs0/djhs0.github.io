@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Python中str,unicode,byte | DJHS0</title>
+    <meta name="description" content="djhs0 start.">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.719cd97d.css" as="style"><link rel="preload" href="/assets/js/app.71ed36c9.js" as="script"><link rel="preload" href="/assets/js/4.66501a8b.js" as="script"><link rel="preload" href="/assets/js/1.50fe1130.js" as="script"><link rel="preload" href="/assets/js/21.ce5a0ce3.js" as="script"><link rel="prefetch" href="/assets/js/10.6c18f870.js"><link rel="prefetch" href="/assets/js/11.3c9f2ebb.js"><link rel="prefetch" href="/assets/js/12.8c34c860.js"><link rel="prefetch" href="/assets/js/13.8e1946f7.js"><link rel="prefetch" href="/assets/js/14.1ec6db65.js"><link rel="prefetch" href="/assets/js/15.bf373dd3.js"><link rel="prefetch" href="/assets/js/16.bb029a4b.js"><link rel="prefetch" href="/assets/js/17.1bebed0d.js"><link rel="prefetch" href="/assets/js/18.fe75ee81.js"><link rel="prefetch" href="/assets/js/19.79b88c19.js"><link rel="prefetch" href="/assets/js/20.bef54572.js"><link rel="prefetch" href="/assets/js/22.31994c68.js"><link rel="prefetch" href="/assets/js/23.7135abc9.js"><link rel="prefetch" href="/assets/js/24.405ecf1a.js"><link rel="prefetch" href="/assets/js/25.9e5cb5bf.js"><link rel="prefetch" href="/assets/js/26.0c183528.js"><link rel="prefetch" href="/assets/js/27.210ba5a2.js"><link rel="prefetch" href="/assets/js/28.fa7032da.js"><link rel="prefetch" href="/assets/js/5.ff361501.js"><link rel="prefetch" href="/assets/js/6.2a634ec8.js"><link rel="prefetch" href="/assets/js/7.18a09678.js"><link rel="prefetch" href="/assets/js/8.80f36cff.js"><link rel="prefetch" href="/assets/js/9.b33a9c1e.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.cd2faf37.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.719cd97d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.png" alt="DJHS0" class="logo"> <span class="site-name">DJHS0</span></a> <div class="links"><div class="color-picker"><a href="#" class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/django.html" class="nav-link"><i class="iconfont undefined"></i>
+  django
+</a></li><li class="dropdown-item"><!----> <a href="/category/旧笔记搬运.html" class="nav-link"><i class="iconfont undefined"></i>
+  旧笔记搬运
+</a></li><li class="dropdown-item"><!----> <a href="/category/linux.html" class="nav-link"><i class="iconfont undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/category/python.html" class="nav-link"><i class="iconfont undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/category/go.html" class="nav-link"><i class="iconfont undefined"></i>
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/category/windows.html" class="nav-link"><i class="iconfont undefined"></i>
+  windows
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/djhs0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/django.html" class="nav-link"><i class="iconfont undefined"></i>
+  django
+</a></li><li class="dropdown-item"><!----> <a href="/category/旧笔记搬运.html" class="nav-link"><i class="iconfont undefined"></i>
+  旧笔记搬运
+</a></li><li class="dropdown-item"><!----> <a href="/category/linux.html" class="nav-link"><i class="iconfont undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/category/python.html" class="nav-link"><i class="iconfont undefined"></i>
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/category/go.html" class="nav-link"><i class="iconfont undefined"></i>
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/category/windows.html" class="nav-link"><i class="iconfont undefined"></i>
+  windows
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/djhs0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Python中str,unicode,byte</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#str-unicode-byte" class="sidebar-link">str,unicode,byte</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#python中encode和decode" class="sidebar-link">python中encode和decode</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#utf-8编码规则" class="sidebar-link">utf-8编码规则</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#大端小端问题" class="sidebar-link">大端小端问题</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#资源" class="sidebar-link">资源</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#point" class="sidebar-link">Point</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/2019/python/2019-03-23-python%E7%9A%84str.html#再理解" class="sidebar-link">再理解</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>Python中str,unicode,byte</h1> <hr> <div data-v-0b496ca7><i class="iconfont reco-account" data-v-0b496ca7><span data-v-0b496ca7>djhs0</span></i> <i class="iconfont reco-date" data-v-0b496ca7><span data-v-0b496ca7>2019-3-23</span></i> <span id="/views/2019/python/2019-03-23-python%E7%9A%84str.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-2e99e05a data-v-0b496ca7><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-2e99e05a></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-2e99e05a></a></span> <i class="iconfont reco-tag tags" data-v-0b496ca7><span class="tag-item" data-v-0b496ca7>
+      unicode
+    </span></i></div></div> <div class="content__default"><h2 id="str-unicode-byte"><a href="#str-unicode-byte" aria-hidden="true" class="header-anchor">#</a> str,unicode,byte</h2> <blockquote><p>byte:字节，一个字节包含8个bit，1byte=8bit,一个字符是两个字节。</p></blockquote> <p>ASCII码：使用8bit来表示英文字符和符号。<br> <strong>字符和字节</strong>：<br> <strong>ASCII码</strong>:一个英文字母占一个字节空间，中文汉字占两个字节。<br> <strong>UTF-8</strong>:一个英文字母占一个字节空间，一个中文汉字占二到四个字节。<br> <strong>unicode</strong>:一个英文占两个字节，一个中文占两个字节。<br> <strong>符号</strong>：英文标点占一个字节，中文标点占两个字节。</p> <p><strong>unicode:是字符集，utf-8是编码规则。</strong><br>
+字符集：为每一个字符分配一个唯一的ID，即码位，code point.<br>
+编码规则：将码位转换成字节序列的规则。</p> <p>在使用<code>utf-8(Unicode Transformation Format)</code>转换<code>unicode</code>时实际上是将一个字符对应的<code>unicode</code>的ID找到一个<code>utf-8</code>对应的ID。<br>
+那么这样做的目地是：</p> <ol><li>规范存储方式，如大小端。</li> <li>变长编码，一定程度上压缩大小。</li></ol> <h2 id="python中encode和decode"><a href="#python中encode和decode" aria-hidden="true" class="header-anchor">#</a> python中encode和decode</h2> <ol><li><strong>encode</strong>:将unicode字符串按照一定的编码规则转换成字节序列。</li> <li><strong>decode</strong>:将一串字节序列按照一定的方式解码成unicode字符串。</li></ol> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> u_seq <span class="token operator">=</span> <span class="token string">&quot;哈哈&quot;</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b_seq <span class="token operator">=</span> u_seq<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b_seq
+<span class="token string">b'\xe5\x93\x88\xe5\x93\x88'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b_seq<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">'哈哈'</span>
+<span class="token comment"># 可以看到python3中字符串默认为unicode字符串，可以encode。</span>
+
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b <span class="token operator">=</span> <span class="token string">&quot;严&quot;</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="token string">b'\xe4\xb8\xa5'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-16'</span><span class="token punctuation">)</span>
+<span class="token string">b'\xff\xfe%N'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-32'</span><span class="token punctuation">)</span>
+<span class="token string">b'\xff\xfe\x00\x00%N\x00\x00'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'ASCII'</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h2 id="utf-8编码规则"><a href="#utf-8编码规则" aria-hidden="true" class="header-anchor">#</a> utf-8编码规则</h2> <ol><li>对于对于单字节字符，这个字节的第1位为0，后7位为unicode码，所以对于英文来讲utf-8编码和ASCII编码时一样的。</li> <li>对于n字节字符，第一个字节的前n位为1，n+1位为0,后面n-1个字节的前两位都为10,其他位放置unicode码。</li></ol> <table><thead><tr><th>Unicode符号范围(十六进制)</th> <th>UTF-8编码方式（二进制）</th></tr></thead> <tbody><tr><td>0000 0000-0000 007F</td> <td>0xxxxxxx</td></tr> <tr><td>0000 0080-0000 07FF</td> <td>110xxxxx 10xxxxxx</td></tr> <tr><td>0000 0800-0000 FFFF</td> <td>1110xxxx 10xxxxxx 10xxxxxx</td></tr> <tr><td>0001 0000-0010 FFFF</td> <td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td></tr></tbody></table> <h2 id="大端小端问题"><a href="#大端小端问题" aria-hidden="true" class="header-anchor">#</a> 大端小端问题</h2> <p>大小端问题的出现是cpu寄存器大小超过1字节，即8位导致的，(对！不但系统有32/64位之分，cpu也有位数之分，32位cpu的寄存器是32位的，64位cpu同理)，当cpu的寄存器位数超过8位，比如16，32，那么存储存储字符的编码的时候就出现了大端和小端问题。<br> <strong>大端</strong>：低位字节放内存的高地址位，高位字节放内存的低地址位。<br> <strong>小端</strong>：高位字节放内存的高地址位，低位字节放内存的低地址位。</p> <p>下面是32bit宽数0x12345678在cpu中的存放方式。</p> <table><thead><tr><th>内存地址</th> <th>小端模式</th> <th>大端模式</th></tr></thead> <tbody><tr><td>0x4000</td> <td>0x78</td> <td>0x12</td></tr> <tr><td>0x4001</td> <td>0x56</td> <td>0x34</td></tr> <tr><td>0x4002</td> <td>0x34</td> <td>0x56</td></tr> <tr><td>0x4003</td> <td>0x12</td> <td>0x78</td></tr></tbody></table> <ol><li>从上面来看，如果cpu是从低位开始读取的时候，那么因为数字的符号放在这个数字的高位，所以cpu一开始就能判断这个数字的符号。</li></ol> <h2 id="资源"><a href="#资源" aria-hidden="true" class="header-anchor">#</a> 资源</h2> <p>unicode之痛：<br>
+http://pycoders-weekly-chinese.readthedocs.io/en/latest/issue5/unipain.html<br>
+从其中得到5个事实：</p> <ol><li>程序的所有的输入与输出都是byte。</li> <li>byte流中不会包含编码信息，即不会指出其是什么编码格式(utf-8/utf-16/ascii etc..)。</li> <li>指明的编码可能是错误的。</li> <li>程序必须处理byte和unicode。</li> <li>世界上的文本中的符号数远远大于256，所以1字节8位不能表示完。</li></ol> <h2 id="point"><a href="#point" aria-hidden="true" class="header-anchor">#</a> Point</h2> <ol><li>在计算机内存中同一使用unicode编码，在需要保存到内存或者传输的时候，就转成各种编码方式生成的编码。</li> <li>python的<code>ord</code>：获取字符的整数，<code>chr</code>:获取整数的字符</li></ol> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'\u4e00'</span>
+<span class="token string">'一'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token string">'\u9fa5'</span>
+<span class="token string">'龥'</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'-'</span><span class="token punctuation">)</span>
+<span class="token number">45</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'一'</span><span class="token punctuation">)</span>
+<span class="token number">19968</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'严'</span><span class="token punctuation">)</span>
+<span class="token number">20005</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token number">20005</span><span class="token punctuation">)</span>
+<span class="token string">'严'</span>
+<span class="token comment"># 中文的开始就是\u4e00 -- \u9fa5</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><hr> <h2 id="再理解"><a href="#再理解" aria-hidden="true" class="header-anchor">#</a> 再理解</h2> <div class="language-python line-numbers-mode"><pre class="language-python"><code>python3的字符串在python内部实际上是<span class="token builtin">unicode</span>。
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">&quot;好&quot;</span><span class="token punctuation">)</span>
+<span class="token number">22909</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></div> <!----> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">8/25/2019, 11:13:27 PM</span></div></footer> <!----> </main> <div class="valine-wrapper" data-v-0162251c><div id="valine" data-v-0162251c></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-d0bfeaa4 data-v-d0bfeaa4><i class="iconfont reco-up" data-v-d0bfeaa4></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.71ed36c9.js" defer></script><script src="/assets/js/4.66501a8b.js" defer></script><script src="/assets/js/1.50fe1130.js" defer></script><script src="/assets/js/21.ce5a0ce3.js" defer></script>
+  </body>
+</html>
